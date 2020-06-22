@@ -63,6 +63,102 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-js时间戳获取与转化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/07/js%E6%97%B6%E9%97%B4%E6%88%B3%E8%8E%B7%E5%8F%96%E4%B8%8E%E8%BD%AC%E5%8C%96/" class="article-date">
+  <time datetime="2020-05-07T08:35:57.885Z" itemprop="datePublished">2020-05-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/07/js%E6%97%B6%E9%97%B4%E6%88%B3%E8%8E%B7%E5%8F%96%E4%B8%8E%E8%BD%AC%E5%8C%96/">js时间戳获取与转化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>获取时间戳</p>
+<ul>
+<li><p>获取到秒</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Date</span>.parse(<span class="keyword">new</span> Data())</span><br></pre></td></tr></table></figure></li>
+<li><p>精确到毫秒</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">new</span> <span class="built_in">Date</span>()).valueOf();</span><br></pre></td></tr></table></figure>
+<p>  valueOf()返回对象的原始值,即返回new Data () 这个对象的原始值,即当前时间到1970年1月1日00分00秒000的毫秒数。</p>
+</li>
+<li><p>精确到毫秒</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">new</span> <span class="built_in">Date</span>()).getTime();</span><br></pre></td></tr></table></figure>
+<p>  getTime()表示从1970年1月1日00分00秒（UTC，即协调世界时 ）到该日期对象的毫秒数。</p>
+</li>
+</ul>
+</li>
+<li><p>转化时间戳</p>
+<ul>
+<li>固定g格式的时间 例如:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span> (<span class="string">'2010-05-07 17:13:00'</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>时间戳转化正常显示的时间</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fliterTime(val) &#123;</span><br><span class="line">        <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(val * <span class="number">1000</span>); <span class="comment">//如果val.length &lt; 13 则表示时间戳精确到秒了 则乘以1000</span></span><br><span class="line">        <span class="keyword">const</span> Y = date.getFullYear() + <span class="string">'-'</span>;</span><br><span class="line">        <span class="keyword">const</span> M =( date.getMonth() + <span class="number">1</span>) &lt; <span class="number">10</span> ? <span class="string">"0"</span> + (date.getMonth() + <span class="number">1</span>) + <span class="string">'-'</span> :( date.getMonth() + <span class="number">1</span>) + <span class="string">'-'</span>;</span><br><span class="line">        <span class="keyword">const</span> D = date.getDate() &lt; <span class="number">10</span> ? <span class="string">"0"</span> + date.getDate() + <span class="string">'-'</span> : date.getDate() + <span class="string">'-'</span>;</span><br><span class="line">        <span class="keyword">const</span> H = date.getHours() &lt; <span class="number">10</span> ? <span class="string">'0'</span> + date.getHours() + <span class="string">' '</span> : date.getHours() + <span class="string">' '</span>;</span><br><span class="line">        <span class="keyword">const</span> F = date.getMinutes() &lt; <span class="number">10</span> ? <span class="string">'0'</span> + date.getMinutes() + <span class="string">':'</span> : date.getMinutes() + <span class="string">':'</span></span><br><span class="line">        <span class="keyword">const</span> S = date.getSeconds() &lt; <span class="number">10</span> ? <span class="string">'0'</span> + date.getSeconds() : date.getSeconds()</span><br><span class="line">        <span class="keyword">return</span> val ? (Y + M + D + H + F + S) : <span class="string">'/'</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<pre><code>getDate()是获取一个月某一天（1~31）;getDay()是获取一个月中的星期几（0~6）</code></pre></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/07/js%E6%97%B6%E9%97%B4%E6%88%B3%E8%8E%B7%E5%8F%96%E4%B8%8E%E8%BD%AC%E5%8C%96/" data-id="ckbpysida0002pgts4xv14gnp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-工作中的笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/06/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-05-06T06:54:34.628Z" itemprop="datePublished">2020-05-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/06/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E7%AC%94%E8%AE%B0/">工作中的笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/06/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E7%AC%94%E8%AE%B0/" data-id="ckbpysicx0001pgts0yli0tp2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Hexo+Github Pages轻松搭博客(2)：在Github上部署" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/12/11/Hexo+Github%20Pages%E8%BD%BB%E6%9D%BE%E6%90%AD%E5%8D%9A%E5%AE%A2(2)%EF%BC%9A%E5%9C%A8Github%E4%B8%8A%E9%83%A8%E7%BD%B2/" class="article-date">
@@ -96,8 +192,8 @@
 <p>接下来打开博客目录下的_config.yml配置文件,(注意冒号后面有个空格，不然会出错滴<del>~</del>)定位到最后的deploy选项，修改如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:ex2tron/ex2tron.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 <p>配置好之后，使用下面的命令就可以部署到Github上了：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-<p>这样通过Github提供的域名地址（如我的：<a href="https://ex2tron.github.io）就可以访问你的博客了，简单快速高效！" target="_blank" rel="noopener">https://ex2tron.github.io）就可以访问你的博客了，简单快速高效！</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g  </span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+<p>这样通过Github提供的域名地址（如我的：<a href="https://duanyulian.github.io）就可以访问你的博客了，简单快速高效！" target="_blank" rel="noopener">https://duanyulian.github.io）就可以访问你的博客了，简单快速高效！</a></p>
 <h3 id="发布新博客"><a href="#发布新博客" class="headerlink" title="发布新博客"></a>发布新博客</h3><ul>
 <li>直接在source文件夹下面的_posts 新建XX.md文件</li>
 <li>用指令新建<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="string">'我的第一篇博客'</span></span><br></pre></td></tr></table></figure>
@@ -155,7 +251,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 <h3 id="初始化博客目录"><a href="#初始化博客目录" class="headerlink" title="初始化博客目录"></a>初始化博客目录</h3><p>在你的本地新建一个存放博客的目录，比如”D:\MyHexoBlog“，然后在这个目录右键，选择”Git Bash Here“，输入下面两条命令进行初始化：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-<p>初始化完成之后，你的目录结构应该是这样的：<br><img src="./img/4f5285280f7d8739768337c49205a82.png" alt=""><br>如果没有出错的话，继续执行下面的指令启动服务：</p>
+<p>初始化完成之后，你的目录结构应该是这样的：<br><img src="/img/4f5285280f7d8739768337c49205a82.png" alt=""><br>如果没有出错的话，继续执行下面的指令启动服务：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
 <p>-启动之后，在浏览器中访问:<a href="http://localhost:4000/,是不是看到了漂亮的Hexo博客页面了。不过目前这个博客还是运行在你本机上的，下篇我们看一下怎么样让别人也能访问这个博客。" target="_blank" rel="noopener">http://localhost:4000/,是不是看到了漂亮的Hexo博客页面了。不过目前这个博客还是运行在你本机上的，下篇我们看一下怎么样让别人也能访问这个博客。</a><br><img src="http://pic.ex2tron.top/default_hexo_theme.png" alt=""></p>
 
@@ -295,7 +391,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li></ul>
     </div>
   </div>
 
@@ -308,6 +404,14 @@
       <ul>
         
           <li>
+            <a href="/2020/05/07/js%E6%97%B6%E9%97%B4%E6%88%B3%E8%8E%B7%E5%8F%96%E4%B8%8E%E8%BD%AC%E5%8C%96/">js时间戳获取与转化</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/06/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E7%AC%94%E8%AE%B0/">工作中的笔记</a>
+          </li>
+        
+          <li>
             <a href="/2019/12/11/Hexo+Github%20Pages%E8%BD%BB%E6%9D%BE%E6%90%AD%E5%8D%9A%E5%AE%A2(2)%EF%BC%9A%E5%9C%A8Github%E4%B8%8A%E9%83%A8%E7%BD%B2/">Hexo+Github Pages轻松搭博客(2)：在Github上部署</a>
           </li>
         
@@ -317,10 +421,6 @@
         
           <li>
             <a href="/2019/12/11/markdowm%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">markdowm基本用法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/11/hello-world/">Hello World</a>
           </li>
         
       </ul>
